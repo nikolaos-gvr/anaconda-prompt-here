@@ -1,0 +1,37 @@
+Windows Registry Editor Version 5.00
+
+; Open Anaconda Prompt here - unofficial Windows File Explorer integration.
+; This file is configured for Anaconda installed at C:\ProgramData\anaconda3.
+; It does not detect the installation path automatically. See README.md.
+; To use another location, edit every installation path below before importing.
+; Registry string values require doubled backslashes and escaped quotes.
+;
+; Double-click this file in File Explorer and confirm the registry import.
+; Entries are created for the current Windows user (HKEY_CURRENT_USER).
+; On Windows 11, look under Show more options in the context menu.
+; Import remove-anaconda-context-menu.reg to remove these menu entries.
+
+; Menu entry shown when right-clicking a folder.
+; The default value (@) is the label; Icon points to an Anaconda icon.
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\AnacondaPromptHere]
+@="Open Anaconda Prompt here"
+"Icon"="C:\\ProgramData\\anaconda3\\Menu\\anaconda-navigator.ico"
+
+; /D disables cmd.exe AutoRun commands; /K keeps the prompt open.
+; call runs Anaconda activation and returns so the next command can run.
+; Passing the installation directory activates the base environment.
+; && changes directory only if activation succeeds.
+; cd /d switches both drive and directory to the selected folder (%1).
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\AnacondaPromptHere\command]
+@="cmd.exe /D /K \"call \"C:\\ProgramData\\anaconda3\\Scripts\\activate.bat\" \"C:\\ProgramData\\anaconda3\" && cd /d \"%1\"\""
+
+; Menu entry shown when right-clicking empty space inside a folder.
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\AnacondaPromptHere]
+@="Open Anaconda Prompt here"
+"Icon"="C:\\ProgramData\\anaconda3\\Menu\\anaconda-navigator.ico"
+
+; %V supplies the folder whose background was right-clicked.
+; Activation and directory switching work the same way as above.
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\AnacondaPromptHere\command]
+@="cmd.exe /D /K \"call \"C:\\ProgramData\\anaconda3\\Scripts\\activate.bat\" \"C:\\ProgramData\\anaconda3\" && cd /d \"%V\"\""
+

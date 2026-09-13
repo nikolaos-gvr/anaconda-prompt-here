@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+
+; Remove the Open Anaconda Prompt here menu entries for the current user.
+; Double-click this file in File Explorer and confirm the registry import.
+; A minus sign before a registry key deletes that key and its subkeys.
+; Only the two AnacondaPromptHere keys created by the setup file are targeted.
+; This does not uninstall Anaconda or delete environments or project files.
+; It removes these entries rather than restoring any previously customized
+; values at the same keys. No installation path changes are needed here.
+
+; Remove the entry for right-clicking a folder and its command subkey.
+[-HKEY_CURRENT_USER\Software\Classes\Directory\shell\AnacondaPromptHere]
+
+; Remove the entry for right-clicking empty space inside a folder.
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\AnacondaPromptHere]
+
